@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okio.Buffer
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.nio.charset.Charset
 
@@ -21,7 +21,7 @@ val httpClientBuilder = OkHttpClient()
 fun <T> rxService(clazz: Class<T>, url: String, factory: Converter.Factory): T = Retrofit.Builder()
     .baseUrl(url)
     .client(httpClientBuilder.build())
-    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .addConverterFactory(factory)
     .build()
     .create(clazz)
@@ -40,7 +40,6 @@ fun handle(chain: Interceptor.Chain) {
             charset = contentType()?.charset(charset)
             requestStr = buffer.readString(charset)
         }
-
         Logger.e("*********************************************************************************************************")
         Logger.e("* 请求方式：" + chain.request().method)
         Logger.e("* 请求链接：" + chain.request().url)

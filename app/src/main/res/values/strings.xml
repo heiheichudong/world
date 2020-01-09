@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">world</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">home</string>
+    <string name="search">search</string>
+    <string name="relation">relation</string>
+    <string name="user">user</string>
 </resources>
